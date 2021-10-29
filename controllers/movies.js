@@ -3,7 +3,9 @@ import { Movie } from "../models/movie.js"
 
 // The form to send to a user when they want to make a new movie
 function newMovie(req, res) {
-  res.render("movies/new")
+  res.render("movies/new", {
+    title: "Add Movie",
+  })
 }
 
 //
@@ -54,6 +56,7 @@ function index(req, res) {
     res.render("movies/index", {
       movies,
       error,
+      title: "All Movies"
     })
   })
 }
