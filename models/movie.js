@@ -2,6 +2,16 @@ import mongoose from "mongoose"
 
 const Schema = mongoose.Schema
 
+const reviewSchema = new Schema({
+  content: String,
+  rating: {
+    type: Number,
+    min: 1,
+    max: 5,
+    defaut: 5,
+  }
+})
+
 const movieSchema = new Schema({
   title: {
     type: String,
@@ -20,6 +30,7 @@ const movieSchema = new Schema({
   },
   cast: [String],
   nowShowing: Boolean,
+  reviews: [reviewSchema]
 }, {
   timestamps: true
 })

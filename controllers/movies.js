@@ -104,6 +104,18 @@ function update(req, res) {
   })
 }
 
+function createReview(req, res) {
+  console.log("creating review associated with:", req.params.id)
+  console.log(req.body)
+  Movie.findById(req.params.id, function(error, movie) {
+    movie.reviews.push(req.body)
+    console.log(movie)
+    movie.save(function(err) {
+      res.redirect(`/movies/${movie._id}`)
+    })
+  })
+}
+
 export {
   newMovie as new,
   create,
@@ -111,5 +123,6 @@ export {
   show,
   deleteMovie as delete,
   edit,
-  update
+  update,
+  createReview
 }
