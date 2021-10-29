@@ -35,7 +35,9 @@ app.use(
 )
 
 // mounted routers
+// localhost:3000
 app.use('/', indexRouter)
+// localhost:3000/movies
 app.use('/movies', moviesRouter)
 
 // catch 404 and forward to error handler
