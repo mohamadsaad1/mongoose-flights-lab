@@ -73,7 +73,19 @@ function show(req, res) {
 function deleteMovie(req, res) {
   console.log("deleting movie: ", req.params.id)
   Movie.findByIdAndDelete(req.params.id, function(err, movie) {
+    console.log(movie)
     res.redirect("/movies")
+  })
+}
+
+function edit(req, res) {
+  console.log("editing movie:", req.params.id)
+  Movie.findById(req.params.id, function(error, movie) {
+    console.log(movie)
+    res.render("movies/edit", {
+      title: "Edit a movie!",
+      movie,
+    })
   })
 }
 
@@ -83,4 +95,5 @@ export {
   index,
   show,
   deleteMovie as delete,
+  edit
 }
