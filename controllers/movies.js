@@ -32,7 +32,19 @@ function create(req, res) {
   // })
 }
 
+function index(req, res) {
+  Movie.find({}, function(error, movies) {
+    console.log("An error if there is one:", error)
+    console.log("The movies:", movies)
+    res.render("movies/index", {
+      movies,
+      error,
+    })
+  })
+}
+
 export {
   newMovie as new,
   create,
+  index,
 }
