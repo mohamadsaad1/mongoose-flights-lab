@@ -39,6 +39,28 @@
     </select>
     <button type="submit">Add Review</button>
   </form>
+  <% if (movie.reviews.length) { %>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Review</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% movie.reviews.forEach(function(review){ %>
+          <tr>
+            <td></td>
+            <td><%= review.content %></td>
+            <td><%= review.rating %> </td>
+          </tr>
+        <% }) %> 
+      </tbody>
+    </table>
+  <% } else { %>
+    <h3>No Reviews Yet</h3>
+  <% } %>
 </main>
 
 <%- include("../partials/footer") %>
