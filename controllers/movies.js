@@ -61,8 +61,26 @@ function index(req, res) {
   })
 }
 
+function show(req, res) {
+  Movie.findById(req.params.id, function(err, movie){
+    res.render("movies/show", {
+      title: `${movie.title}'s Details`,
+      movie,
+    })
+  })
+}
+
+function deleteMovie(req, res) {
+  console.log("deleting movie: ", req.params.id)
+  Movie.findByIdAndDelete(req.params.id, function(err, movie) {
+    res.redirect("/movies")
+  })
+}
+
 export {
   newMovie as new,
   create,
   index,
+  show,
+  deleteMovie as delete,
 }
