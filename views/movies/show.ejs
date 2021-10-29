@@ -51,7 +51,7 @@
       <tbody>
         <% movie.reviews.forEach(function(review){ %>
           <tr>
-            <td></td>
+            <td><%= review.createdAt.toLocaleDateString() %> </td>
             <td><%= review.content %></td>
             <td><%= review.rating %> </td>
           </tr>

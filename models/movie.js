@@ -10,6 +10,8 @@ const reviewSchema = new Schema({
     max: 5,
     defaut: 5,
   }
+}, {
+  timestamps: true
 })
 
 const movieSchema = new Schema({
