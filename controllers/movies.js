@@ -17,8 +17,6 @@ function create(req, res) {
   if (req.body.cast) {
     req.body.cast = req.body.cast.split(", ")
   }
-  console.log(req.body)
-  console.log(req.body.key)
   for (let key in req.body) {
     // on the first iteration
     // req.body[key] === req.body.title
@@ -28,7 +26,6 @@ function create(req, res) {
       delete req.body[key]
     }
   }
-  console.log(req.body)
 
   //! Two methods of creating movies below!
   //* Creating the movie using the Movie Model
@@ -89,11 +86,30 @@ function edit(req, res) {
   })
 }
 
+function update(req, res) {
+  console.log("remaking a movie:", req.params.id)
+  req.body.nowShowing = !!req.body.nowShowing
+
+  for (let key in req.body) {
+    // on the first iteration
+    // req.body[key] === req.body.title
+    // on the second iteration
+    /// req.body[key] === req.body.releaseYear
+    if (req.body[key] === "") {
+      delete req.body[key]
+    }
+  }
+  Movie.findByIdAndUpdate(req.params.id, req.body, function(err, movie) {
+    res.redirect(`/movies/${movie._id}`)
+  })
+}
+
 export {
   newMovie as new,
   create,
   index,
   show,
   deleteMovie as delete,
-  edit
+  edit,
+  update
 }

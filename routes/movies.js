@@ -14,6 +14,8 @@ router.get("/:id/edit", moviesCtrl.edit)
 router.post("/", moviesCtrl.create)
 // localhost:3000/movies/:id - DELETE
 router.delete("/:id", moviesCtrl.delete)
+// localhost:3000/movies/:id - PUT
+router.put("/:id", moviesCtrl.update)
 
 export {
   router
