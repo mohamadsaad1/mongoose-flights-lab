@@ -30,7 +30,6 @@ const movieSchema = new Schema({
     type: String,
     enum: ["G", "PG", "PG-13", "R"]
   },
-  cast: [String],
   nowShowing: Boolean,
   reviews: [reviewSchema]
 }, {

@@ -13,10 +13,6 @@ function create(req, res) {
   // convert nowShowing checkbox to true or false
   req.body.nowShowing = !!req.body.nowShowing
   console.log(req.body)
-  // split cast into array of strings
-  if (req.body.cast) {
-    req.body.cast = req.body.cast.split(", ")
-  }
   for (let key in req.body) {
     // on the first iteration
     // req.body[key] === req.body.title
