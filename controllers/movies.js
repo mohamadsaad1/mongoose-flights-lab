@@ -30,7 +30,7 @@ function create(req, res) {
       console.log(error)
       return res.redirect("/movies/new")
     }
-    res.redirect("/movies")
+    res.redirect(`/movies/${movie._id}`)
   })
 
   //* Creating the movie by instantiating a document using the Movie Model
@@ -40,7 +40,7 @@ function create(req, res) {
   //     console.log(err)
   //     return res.redirect("/movies/new")
   //   } 
-  //   res.redirect("/movies/new")
+  //   res.redirect(`/movies/${movie._id}`)
   // })
 }
 
@@ -55,7 +55,9 @@ function index(req, res) {
 }
 
 function show(req, res) {
-  Movie.findById(req.params.id, function(err, movie){
+  Movie.findById(req.params.id)
+  .populate("cast")
+  .exec(function(err,movie){
     let total = 0
     movie.reviews.forEach(function(review){
       total += review.rating

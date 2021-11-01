@@ -31,7 +31,8 @@ const movieSchema = new Schema({
     enum: ["G", "PG", "PG-13", "R"]
   },
   nowShowing: Boolean,
-  reviews: [reviewSchema]
+  reviews: [reviewSchema],
+  cast: [{type: Schema.Types.ObjectId, ref: "Performer"}]
 }, {
   timestamps: true
 })

@@ -9,6 +9,13 @@ function newPerformer(req, res) {
   })
 }
 
+function create(req, res) {
+  Performer.create(req.body, function(err, performer){
+    res.redirect("/performers/new")
+  })
+}
+
 export {
-  newPerformer as new
+  newPerformer as new,
+  create
 }
