@@ -60,6 +60,7 @@ function show(req, res) {
   Movie.findById(req.params.id)
   .populate("cast")
   .exec(function(err,movie){
+    console.log(movie.cast)
     Performer.find({_id: {$nin: movie.cast}}, function(err, performersNotInCast){
       console.log(performersNotInCast)
       let total = 0
@@ -115,8 +116,6 @@ function update(req, res) {
 }
 
 function createReview(req, res) {
-  console.log("creating review associated with:", req.params.id)
-  console.log(req.body)
   Movie.findById(req.params.id, function(error, movie) {
     movie.reviews.push(req.body)
     console.log(movie)
@@ -127,8 +126,12 @@ function createReview(req, res) {
 }
 
 function addToCast(req, res) {
-  console.log(req.body)
-  console.log("adding to cast")
+  Movie.findById(req.params.id, function(err, movie){
+    movie.cast.push(req.body.performerId)
+    movie.save(function(err){
+      res.redirect(`/movies/${movie._id}`)
+    })
+  })
 }
 
 export {
