@@ -56,8 +56,14 @@ function index(req, res) {
 
 function show(req, res) {
   Movie.findById(req.params.id, function(err, movie){
+    let total = 0
+    movie.reviews.forEach(function(review){
+      total += review.rating
+    })
+    let averageReviewScore = (total / movie.reviews.length).toFixed(1)
     res.render("movies/show", {
       title: `${movie.title}'s Details`,
+      averageReviewScore,
       movie,
     })
   })

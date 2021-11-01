@@ -13,6 +13,7 @@ import("./config/database.js")
 // import routers
 import { router as indexRouter } from './routes/index.js'
 import { router as moviesRouter } from './routes/movies.js'
+import { router as performersRouter } from './routes/performers.js'
 
 // set up app
 const app = express()
@@ -41,6 +42,8 @@ app.use(methodOverride("_method"))
 app.use('/', indexRouter)
 // localhost:3000/movies
 app.use('/movies', moviesRouter)
+// localhost:3000/performers
+app.use("/performers", performersRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
