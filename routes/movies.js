@@ -15,6 +15,8 @@ router.get("/:id/edit", moviesCtrl.edit)
 router.post("/", moviesCtrl.create)
 // loclhost:3000/movies/:id/reviews
 router.post("/:id/reviews", moviesCtrl.createReview)
+// localhost:3000/movies/:id/performers - POST
+router.post("/:id/performers", moviesCtrl.addToCast)
 
 // localhost:3000/movies/:id - DELETE
 router.delete("/:id", moviesCtrl.delete)

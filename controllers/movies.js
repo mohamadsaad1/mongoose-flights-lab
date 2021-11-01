@@ -1,5 +1,7 @@
 // Importing the Movie model
 import { Movie } from "../models/movie.js"
+// Importing the Performer model
+import { Performer } from "../models/performer.js"
 
 // The form to send to a user when they want to make a new movie
 function newMovie(req, res) {
@@ -58,15 +60,19 @@ function show(req, res) {
   Movie.findById(req.params.id)
   .populate("cast")
   .exec(function(err,movie){
-    let total = 0
-    movie.reviews.forEach(function(review){
-      total += review.rating
-    })
-    let averageReviewScore = (total / movie.reviews.length).toFixed(1)
-    res.render("movies/show", {
-      title: `${movie.title}'s Details`,
-      averageReviewScore,
-      movie,
+    Performer.find({_id: {$nin: movie.cast}}, function(err, performersNotInCast){
+      console.log(performersNotInCast)
+      let total = 0
+      movie.reviews.forEach(function(review){
+        total += review.rating
+      })
+      let averageReviewScore = (total / movie.reviews.length).toFixed(1)
+      res.render("movies/show", {
+        title: `${movie.title}'s Details`,
+        averageReviewScore,
+        movie,
+        performersNotInCast
+      })
     })
   })
 }
@@ -120,6 +126,11 @@ function createReview(req, res) {
   })
 }
 
+function addToCast(req, res) {
+  console.log(req.body)
+  console.log("adding to cast")
+}
+
 export {
   newMovie as new,
   create,
@@ -128,5 +139,6 @@ export {
   deleteMovie as delete,
   edit,
   update,
-  createReview
+  createReview,
+  addToCast
 }
