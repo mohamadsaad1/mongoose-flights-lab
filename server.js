@@ -1,3 +1,4 @@
+
 import "dotenv/config.js"
 import createError from 'http-errors'
 import express from 'express'
@@ -5,15 +6,15 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
-import methodOverride from "method-override"
+import methodOverride from 'method-override'
 
 // Connect to the database with Mongoose
-import("./config/database.js")
+import('./config/database.js')
 
 // import routers
 import { router as indexRouter } from './routes/index.js'
-import { router as moviesRouter } from './routes/movies.js'
-import { router as performersRouter } from './routes/performers.js'
+import { router as flightsRouter } from './routes/flights.js'
+import { router as destinationsRouter } from './routes/destinations.js'
 
 // set up app
 const app = express()
@@ -35,15 +36,12 @@ app.use(
     path.join(path.dirname(fileURLToPath(import.meta.url)), 'public')
   )
 )
-app.use(methodOverride("_method"))
+app.use(methodOverride('_method'))
 
 // mounted routers
-// localhost:3000
 app.use('/', indexRouter)
-// localhost:3000/movies
-app.use('/movies', moviesRouter)
-// localhost:3000/performers
-app.use("/performers", performersRouter)
+app.use('/flights', flightsRouter)
+app.use('/destinations', destinationsRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
