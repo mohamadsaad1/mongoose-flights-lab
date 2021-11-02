@@ -55,7 +55,7 @@
 
 <form id="add-des-to-flight" action="/flights/<%= flight._id %>/destinations" method="POST">
   <select name="destinationId">
-    <%- destinationsNotinList.map(d => `<option value="${d._id}">${d.airport}</option>`).join('') %>
+    <%- destinationsNotInList.map(d => `<option value="${d._id}">${d.airport}</option>`).join('') %>
   </select>
   <button type="submit">Add to Flight</button>
 </form>
@@ -66,7 +66,7 @@
     id="add-ticket-form"
     action="/flights/<%= flight._id %>/tickets"
     method="POST">
-  <label for="content-input">Seat  (A1 - F99):</label>
+  <label for="content-input">Seat  (A1 - H99):</label>
   <input name="seat" required pattern="[A-F][1-9]\d?">  
   <label for="content-input">Price:</label>
   <input name="price" required pattern="^[0-9]*$" min=0>  
