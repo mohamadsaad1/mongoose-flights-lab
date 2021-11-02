@@ -4,10 +4,8 @@
 
 <main>
 	<h1>Add New Destination</h1>
-  <p>Please first ensure that the destination is not in the dropdown
     <select>
-      <% destinations.forEach(function(destination) { %>
-        <option><%= destination.airport %></option>
+      <% destinations.forEach(function(destination) { %><option><%= destination.airport %></option>
       <% }) %>
     </select>
   </p>

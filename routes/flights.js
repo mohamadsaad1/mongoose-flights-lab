@@ -4,19 +4,18 @@ const router = Router()
 
 /* GET users listing. */
 router.get('/', flightsCtrl.index)
-router.get('/:id', flightsCtrl.show)
 router.get('/new', flightsCtrl.new)
+router.get('/:id', flightsCtrl.show)
 
-// POST
+// post
 router.post('/', flightsCtrl.create)
 router.post('/:id/tickets', flightsCtrl.addTicket)
 router.post('/:id/destinations', flightsCtrl.addToFlight)
 
-//DELETE
-
+// delete
 router.delete('/:id', flightsCtrl.delete)
-router.delete('/:flightId/destinations/:destinationId', flightsCtrl.deleteDestination)
 router.delete('/:flightId/tickets/:ticketId', flightsCtrl.deleteTicket)
+router.delete('/:flightId/destinations/:destinationId', flightsCtrl.deleteDestination)
 
 export {
   router
