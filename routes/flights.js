@@ -8,11 +8,13 @@ router.get('/new', flightsCtrl.new)
 router.get('/:id', flightsCtrl.show)
 
 // post
+// localhost:3000/flights/:id/.... - POST
 router.post('/', flightsCtrl.create)
 router.post('/:id/tickets', flightsCtrl.addTicket)
 router.post('/:id/destinations', flightsCtrl.addToFlight)
 
 // delete
+// localhost:3000/flights/:id/.... - DELETE
 router.delete('/:id', flightsCtrl.delete)
 router.delete('/:flightId/tickets/:ticketId', flightsCtrl.deleteTicket)
 router.delete('/:flightId/destinations/:destinationId', flightsCtrl.deleteDestination)
@@ -20,19 +22,3 @@ router.delete('/:flightId/destinations/:destinationId', flightsCtrl.deleteDestin
 export {
   router
 }
-
-
-
-
-
-
-
-
-// localhost:3000/movies/:id/performers - POST
-
-
-// localhost:3000/movies/:id - DELETE
-
-
-// localhost:3000/movies/:id - PUT
-

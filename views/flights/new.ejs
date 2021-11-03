@@ -9,8 +9,8 @@
     <label>Airline:
       <select name="airline">
         <option value="American">American</option>
-        <option value="Southwest">Southwest</option>
         <option value="United">United</option>
+        <option value="Southwest">Southwest</option>
         </select> 
     </label><br>
     <label>Airport:
@@ -28,7 +28,7 @@
     <label>Departure Date:
       <input type="datetime-local" name="departs" value="{{ Date.now() | date("Y-m-d") }}" min="{{ Date.now() | date("Y-m-d") }}" />
     </label>
-    <button type="submit">Add Flight</button>
+    <button type="submit">Add a Flight</button>
   </form>
 </main>
 

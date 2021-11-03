@@ -24,9 +24,11 @@ app.set(
   'views',
   path.join(path.dirname(fileURLToPath(import.meta.url)), 'views')
 )
+
 app.set('view engine', 'ejs')
 
 // middleware
+
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
