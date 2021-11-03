@@ -84,6 +84,7 @@ function deleteDestination(req,res){
   Flight.findById(req.params.flightId, function(err, flight){
     flight.destinations.remove({_id:req.params.destinationId})
     flight.save(function(err, flight) {
+      res.redirect(`/flights/${flight._id}`)
     })
   })
 }
